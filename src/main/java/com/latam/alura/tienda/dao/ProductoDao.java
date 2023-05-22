@@ -1,7 +1,6 @@
 package com.latam.alura.tienda.dao;
 
 import javax.persistence.EntityManager;
-
 import com.latam.alura.tienda.modelo.Producto;
 
 public class ProductoDao {
@@ -12,7 +11,7 @@ public class ProductoDao {
 		this.em = em;		
 	}
 	
-	public void guardar(Producto producto) {
+	public void guardar(Producto producto){		
 		this.em.persist(producto);
 	}
 }
