@@ -28,11 +28,19 @@ public class RegistroDeProducto {
 		em.getTransaction().begin();
 		em.persist(celulares);
 		celulares.setNombre("LIBROS");
+		
 		//categoriaDAO.guardar(celulares);
 		//productoDao.guardar(celular);
-		em.getTransaction().commit();
-		em.close();
+
+		//em.getTransaction().commit();
+		em.flush();
+		
+		//em.close();
+		em.clear();
+		
+		celulares = em.merge(celulares);		
 		celulares.setNombre("SOFTWARE");
+		em.flush();
 	}
 
 }
