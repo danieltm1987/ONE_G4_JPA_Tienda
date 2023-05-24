@@ -41,6 +41,11 @@ public class RegistroDeProducto {
 		celulares = em.merge(celulares);		
 		celulares.setNombre("SOFTWARE");
 		em.flush();
+		em.clear();
+		
+		celulares = em.merge(celulares);
+		em.remove(celulares);
+		em.flush();
 	}
 
 }
