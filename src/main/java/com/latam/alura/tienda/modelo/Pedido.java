@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.ManyToAny;
@@ -28,9 +29,15 @@ public class Pedido {
 	@ManyToOne
 	private Cliente cliente;
 	
-	@ManyToMany
-	@JoinTable(name="items_pedidox")
-	private List<Producto> productos;
+	/*
+	 *@ManyToMany
+	 *@JoinTable(name="items_pedidox")
+	 *private List<Producto> productos;
+	 * 
+	 */
+	
+	@OneToMany
+	private List<ItemsPedido> items;
 	
 	public Pedido() {
 		
