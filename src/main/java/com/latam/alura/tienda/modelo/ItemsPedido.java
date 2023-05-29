@@ -33,7 +33,8 @@ public class ItemsPedido {
 	public ItemsPedido(int cantidad, Producto producto, Pedido pedido) {
 		this.cantidad = cantidad;
 		this.producto = producto;
-		this.pedido = pedido;		
+		this.pedido = pedido;
+		this.precioUnitario=producto.getPrecio();
 	}
 
 	public int getCantidad() {
