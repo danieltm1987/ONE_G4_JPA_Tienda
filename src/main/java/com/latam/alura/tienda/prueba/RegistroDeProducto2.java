@@ -1,16 +1,16 @@
 package com.latam.alura.tienda.prueba;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-
 import java.math.BigDecimal;
-import java.sql.SQLException;
 import java.util.List;
-
 import com.latam.alura.tienda.dao.CategoriaDao;
+import com.latam.alura.tienda.dao.ClienteDao;
 import com.latam.alura.tienda.dao.ProductoDao;
+import com.latam.alura.tienda.dao.PedidoDao;
 import com.latam.alura.tienda.modelo.Categoria;
+import com.latam.alura.tienda.modelo.Cliente;
+import com.latam.alura.tienda.modelo.ItemsPedido;
+import com.latam.alura.tienda.modelo.Pedido;
 import com.latam.alura.tienda.modelo.Producto;
 import com.latam.alura.tienda.utils.JPAUtils;
 
@@ -19,10 +19,23 @@ public class RegistroDeProducto2 {
 	public static void main(String[] args) {
 		
 		registrarProducto();
-		EntityManager em = JPAUtils.getEntityManager();		
-		ProductoDao productoDao = new ProductoDao(em);
 		
+		EntityManager em = JPAUtils.getEntityManager();		
+		ProductoDao productoDao = new ProductoDao(em);		
 		Producto producto = productoDao.consultaPorId(1l);
+		
+		ClienteDao clienteDao = new ClienteDao(em);
+		PedidoDao pedidoDao = new PedidoDao(em);		
+		
+		Cliente cliente = new Cliente("Daniel","k6757kjb");
+		Pedido pedido = new Pedido(cliente);
+		pedido.agregarItems(new ItemsPedido(5, producto, pedido));
+		
+		em.getTransaction().begin();
+		clienteDao.guardar(cliente);
+		pedidoDao.guardar(pedido);
+		em.getTransaction().commit();
+
 		System.out.println("nombre del producto: "+producto.getNombre());
 		
 		List<Producto> productos = productoDao.consultaTodos();
@@ -54,5 +67,4 @@ public class RegistroDeProducto2 {
 		em.getTransaction().commit();
 		em.close();
 	}
-
 }
