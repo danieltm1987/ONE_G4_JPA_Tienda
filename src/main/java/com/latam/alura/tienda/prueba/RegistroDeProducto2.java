@@ -36,6 +36,9 @@ public class RegistroDeProducto2 {
 		pedidoDao.guardar(pedido);
 		em.getTransaction().commit();
 
+		BigDecimal valorTotal = pedidoDao.valorTotalVendido();
+		System.out.println("Valore Toral vendido es :"+valorTotal);
+		
 		System.out.println("nombre del producto: "+producto.getNombre());
 		
 		List<Producto> productos = productoDao.consultaTodos();
