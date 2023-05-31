@@ -58,5 +58,8 @@ public class PedidoDao {
 		return em.createQuery(jpql, BigDecimal.class).getSingleResult();
 	}
 	
-	
+	public Double valorPromedioVendido() {
+		String jpql = "SELECT AVG(p.valorTotal) FROM Pedido p";
+		return em.createQuery(jpql, Double.class).getSingleResult();
+	}
 }

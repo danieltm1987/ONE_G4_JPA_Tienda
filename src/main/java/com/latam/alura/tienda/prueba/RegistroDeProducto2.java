@@ -37,7 +37,10 @@ public class RegistroDeProducto2 {
 		em.getTransaction().commit();
 
 		BigDecimal valorTotal = pedidoDao.valorTotalVendido();
-		System.out.println("Valore Toral vendido es :"+valorTotal);
+		System.out.println("Valore Total vendido es :"+valorTotal);
+		
+		Double valorPromedio = pedidoDao.valorPromedioVendido();
+		System.out.println("Valor Promedio Vendido es :"+valorPromedio);
 		
 		System.out.println("nombre del producto: "+producto.getNombre());
 		
@@ -52,6 +55,8 @@ public class RegistroDeProducto2 {
 		
 		BigDecimal precio = productoDao.consultarPrecioPorNombreDeProducto("Samsung");
 		System.out.println("El precio del Producto es :"+precio);
+		
+		
 		
 	}
 
