@@ -35,12 +35,23 @@ public class RegistroDeProducto2 {
 		clienteDao.guardar(cliente);
 		pedidoDao.guardar(pedido);
 		em.getTransaction().commit();
-
+		
 		BigDecimal valorTotal = pedidoDao.valorTotalVendido();
 		System.out.println("Valore Total vendido es :"+valorTotal);
-		
+				
 		Double valorPromedio = pedidoDao.valorPromedioVendido();
 		System.out.println("Valor Promedio Vendido es :"+valorPromedio);
+		
+		
+				
+		List<Object[]> relatorio =	pedidoDao.relatorioDeVentas();
+		
+		for(Object[] obj:relatorio) {
+			System.out.println("Nombre :"+obj[0]);
+			System.out.println("Suma Cantidad: "+obj[1]);
+			System.out.println("Fecha: "+obj[2]);
+		}
+		
 		
 		System.out.println("nombre del producto: "+producto.getNombre());
 		
