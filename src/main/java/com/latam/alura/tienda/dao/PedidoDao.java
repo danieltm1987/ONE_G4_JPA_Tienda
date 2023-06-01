@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.List;
 import javax.persistence.EntityManager;
 import com.latam.alura.tienda.modelo.Pedido;
+import com.latam.alura.tienda.vo.RelatorioDeVenta;
 
 public class PedidoDao {
 
@@ -72,4 +73,28 @@ public class PedidoDao {
 		
 		return em.createQuery(jpql,Object[].class).getResultList();
 	}
+	
+	/*
+	 * VO = Value Object
+	 * Uno de los patrones más útiles en mi día a día son los value objects. 
+	 * Los value objects (VO) son objetos que se identifican por su contenido y 
+	 * nos ayudan a modelar conceptos de negocio.
+	 * 
+	 */
+	
+	public List<RelatorioDeVenta> relatorioDeVentasVO(){
+		String jpql = "SELECT new com.latam.alura.tienda.vo.RelatorioDeVenta(producto.nombre, "
+				+ "SUM(item.cantidad), "
+				+ "MAX(pedido.fecha)) "
+				+ "FROM Pedido pedido "
+				+ "JOIN pedido.items item "
+				+ "JOIN item.producto producto "
+				+ "GROUP BY producto.nombre "
+				+ "ORDER BY item.cantidad DESC ";
+				
+		
+		return (List<RelatorioDeVenta>) em.createQuery(jpql,RelatorioDeVenta.class).getSingleResult();
+	}
+	
+	
 }
