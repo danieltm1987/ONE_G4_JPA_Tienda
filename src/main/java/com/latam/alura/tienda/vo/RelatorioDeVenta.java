@@ -41,13 +41,14 @@ public class RelatorioDeVenta {
 	public void setFechaDeUltimaVenta(LocalDate fechaDeUltimaVenta) {
 		this.FechaDeUltimaVenta = fechaDeUltimaVenta;
 	}
-
+	
+/*
 	@Override
 	public String toString() {
 		return "RelatorioDeVenta [nombreDelProducto=" + nombreDelProducto + ", cantidadDeProducto=" + CantidadDeProducto
 				+ ", fechaDeUltimaVenta=" + FechaDeUltimaVenta + "]";
 	}
-	
+	*/
 	
 	
 	

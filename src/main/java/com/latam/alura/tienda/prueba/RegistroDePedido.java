@@ -57,9 +57,9 @@ public class RegistroDePedido {
 		
 		System.out.println("\nRelatorio de Ventas VO \n");
 		
-		List<RelatorioDeVenta> relatorioVo = pedidoDao.relatorioDeVentasVO();
-		
-		relatorioVo.forEach(System.out::println);
+		//TODO se genera error en este metodo
+		//List<RelatorioDeVenta> relatorioVo = pedidoDao.relatorioDeVentasVO();
+		//relatorioVo.forEach(System.out::println);
 		
 		
 		

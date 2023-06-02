@@ -74,6 +74,7 @@ public class PedidoDao {
 		return em.createQuery(jpql,Object[].class).getResultList();
 	}
 	
+	
 	/*
 	 * VO = Value Object
 	 * Uno de los patrones más útiles en mi día a día son los value objects. 
@@ -93,7 +94,7 @@ public class PedidoDao {
 				+ "ORDER BY item.cantidad DESC ";
 				
 		
-		return (List<RelatorioDeVenta>) em.createQuery(jpql,RelatorioDeVenta.class).getSingleResult();
+		return em.createQuery(jpql,RelatorioDeVenta.class).getResultList();
 	}
 	
 	

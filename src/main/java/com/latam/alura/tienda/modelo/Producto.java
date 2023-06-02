@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 import java.math.BigDecimal;
@@ -15,6 +16,7 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name="productos")
+@NamedQuery(name="Producto.consultaDePrecio", query="SELECT P.precio FROM Producto AS P Where P.nombre=:nombre")
 public class Producto {
 	
 	@Id
